@@ -1,21 +1,21 @@
-import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Operator implements Runnable {
-    private final int ANSWER_TIME = 2000;
-    private final ConcurrentLinkedDeque<Integer> base;
+    private final ConcurrentLinkedQueue<Integer> base;
 
-    public Operator(ConcurrentLinkedDeque<Integer> base) {
+    public Operator(ConcurrentLinkedQueue<Integer> base) {
         this.base = base;
     }
 
     @Override
     public void run() {
+        int answerTime = 1000;
         int count = 0;
         while (!base.isEmpty()) {
-            base.pollFirst();
+            base.poll();
             count++;
             try {
-                Thread.sleep(ANSWER_TIME);
+                Thread.sleep(answerTime);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

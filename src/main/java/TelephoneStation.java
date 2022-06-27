@@ -1,27 +1,28 @@
 import java.util.Random;
-import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class TelephoneStation implements Runnable {
-    private final int LIMIT = 5;
-    private final int CALL_LIMIT = 5;
-    private final int DELAY = 500;
-    private final int INTERVAL = 1000;
-    private final ConcurrentLinkedDeque<Integer> base;
+    private final ConcurrentLinkedQueue<Integer> base;
 
-    public TelephoneStation(ConcurrentLinkedDeque<Integer> base) {
+    public TelephoneStation(ConcurrentLinkedQueue<Integer> base) {
         this.base = base;
     }
 
     @Override
     public void run() {
-        Random random = new Random();
+        int limit = 5;
+        int callLimit = 5;
+        int delay = 50;
+        int interval = 1000;
         int count = 0;
+        Random random = new Random();
+
         try {
-            for (int i = 0; i < LIMIT; i++) {
-                for (int j = 0; j < CALL_LIMIT; j++) {
-                    base.addLast(random.nextInt(INTERVAL));
+            for (int i = 0; i < limit; i++) {
+                for (int j = 0; j < callLimit; j++) {
+                    base.add(random.nextInt(interval));
                     count++;
-                    Thread.sleep(DELAY);
+                    Thread.sleep(delay);
                 }
             }
         } catch (InterruptedException e) {
