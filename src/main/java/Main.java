@@ -1,8 +1,8 @@
-import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        final ConcurrentLinkedDeque<Integer> base = new ConcurrentLinkedDeque<>();
+        final ConcurrentLinkedQueue<Integer> base = new ConcurrentLinkedQueue<>();
 
         Thread telephoneStation = new Thread(new TelephoneStation(base), "АТС");
         Thread operator1 = new Thread(new Operator(base), "Оператор 1");

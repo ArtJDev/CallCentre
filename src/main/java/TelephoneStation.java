@@ -1,14 +1,14 @@
 import java.util.Random;
-import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class TelephoneStation implements Runnable {
-    private final int LIMIT = 5;
-    private final int CALL_LIMIT = 5;
-    private final int DELAY = 500;
-    private final int INTERVAL = 1000;
-    private final ConcurrentLinkedDeque<Integer> base;
+    private static final int LIMIT = 5;
+    private static final int CALL_LIMIT = 5;
+    private static final int DELAY = 50;
+    private static final int INTERVAL = 1000;
+    private final ConcurrentLinkedQueue<Integer> base;
 
-    public TelephoneStation(ConcurrentLinkedDeque<Integer> base) {
+    public TelephoneStation(ConcurrentLinkedQueue<Integer> base) {
         this.base = base;
     }
 
@@ -19,7 +19,7 @@ public class TelephoneStation implements Runnable {
         try {
             for (int i = 0; i < LIMIT; i++) {
                 for (int j = 0; j < CALL_LIMIT; j++) {
-                    base.addLast(random.nextInt(INTERVAL));
+                    base.add(random.nextInt(INTERVAL));
                     count++;
                     Thread.sleep(DELAY);
                 }
