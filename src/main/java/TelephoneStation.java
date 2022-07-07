@@ -2,10 +2,10 @@ import java.util.Random;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class TelephoneStation implements Runnable {
-    private static final int LIMIT = 5;
-    private static final int CALL_LIMIT = 5;
-    private static final int DELAY = 50;
-    private static final int INTERVAL = 1000;
+    static final int LIMIT = 5;
+    static final int CALL_LIMIT = 5;
+    static final int DELAY = 50;
+    static final int INTERVAL = 1000;
     private final ConcurrentLinkedQueue<Integer> base;
 
     public TelephoneStation(ConcurrentLinkedQueue<Integer> base) {

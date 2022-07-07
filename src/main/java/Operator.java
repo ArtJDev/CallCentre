@@ -1,7 +1,7 @@
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Operator implements Runnable {
-    private static final int ANSWER_TIME = 2000;
+    static final int ANSWER_TIME = 2000;
     private final ConcurrentLinkedQueue<Integer> base;
 
     public Operator(ConcurrentLinkedQueue<Integer> base) {
